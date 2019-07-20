@@ -20,7 +20,7 @@ export default {
   methods: {
       FetchData: function() {
           var app = this;
-          axios.get("/todo/list").then(response => {
+          axios.get(process.env.API_URL + "/todo/list").then(response => {
               app.lists = response.data;
           });
       },
