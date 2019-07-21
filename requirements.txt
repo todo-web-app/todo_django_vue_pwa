@@ -4,6 +4,7 @@ django-cors-headers==3.0.2
 djangorestframework==3.10.1
 gunicorn==19.9.0
 pep8==1.7.1
+psycopg2-binary==2.8.3
 python-dotenv==0.10.3
 pytz==2019.1
 sqlparse==0.3.0
