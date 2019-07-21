@@ -140,5 +140,5 @@ CORS_ORIGIN_WHITELIST = (
     'http://127.0.0.1:8080'
 )
 
-DEBUG = False
+DEBUG = True
 ALLOWED_HOSTS = ['todo-django-vue-pwa.herokuapp.com', 'localhost']
