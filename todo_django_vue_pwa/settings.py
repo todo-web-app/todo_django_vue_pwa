@@ -29,7 +29,7 @@ if os.path.isfile(dotenv_file):
 SECRET_KEY = '51!uw=2ya=qa@kahy0x%b&=5@+cs_5^p96ol!)^!+#2msgya*-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DEBUG', True)
 
 ALLOWED_HOSTS = ['todo-django-vue-pwa.herokuapp.com', 'localhost']
 
@@ -86,7 +86,6 @@ WSGI_APPLICATION = 'todo_django_vue_pwa.wsgi.application'
 
 DATABASES = {}
 DATABASES['default'] = dj_database_url.config(conn_max_age=600)
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
