@@ -22,4 +22,7 @@ urlpatterns = [
     path('todo/', include('todo.urls')),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('', TemplateView.as_view(template_name='index.html')),
+    path('service-worker.js', (TemplateView.as_view(template_name="service-worker.js",
+    content_type='application/javascript', )), name='sw.js'),
+    path('index.html', TemplateView.as_view(template_name='index.html')),
 ]
