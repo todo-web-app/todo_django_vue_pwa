@@ -11,7 +11,7 @@
             </span>
             <span v-else>{{ item.title }}</span>
           </span>
-          <a href="javacript:void(0);" v-on:click="deleteItem(item.id)">Delete</a>
+          <button v-on:click="deleteItem(item.id)">Delete</button>
         </li>
       </ul>
     </div>
@@ -44,6 +44,7 @@ export default {
         .post(process.env.API_URL + "/todo/list/", newItem)
         .then(response => {
           app.fetchData();
+          app.item = "";
         });
     },
     deleteItem: function(id) {
