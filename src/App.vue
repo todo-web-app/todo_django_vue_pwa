@@ -1,30 +1,48 @@
 <template>
-  <div id="app">
-    <input type="text" v-model="item" placeholder="I will do..." />
-    <button v-on:click="addItem">Add</button>
-    <div>
-      <ul>
-        <li v-for="item in lists" v-bind:key="item.id">
-          <span v-on:click="toggleStatus(item)">
-            <span v-if="item.done">
-              <strike>{{ item.title }}</strike>
-            </span>
-            <span v-else>{{ item.title }}</span>
-          </span>
-          <button v-on:click="deleteItem(item.id)">Delete</button>
-        </li>
-      </ul>
+  <div class="app">
+    <div class="container">
+      <div class="row header">
+        <h1 class="col s12 center-align teal-text">To-Do List!</h1>
+      </div>
+      <div class="row">
+        <form @submit.prevent="addTodo" class="col s12">
+          <div class="input-field">
+            <i class="material-icons prefix">list</i>
+            <textarea v-model="newTodo" id="icon_prefix2" class="materialize-textarea"></textarea>
+            <label for="icon_prefix2">What to do?</label>
+          </div>
+          <button class="btn waves-effect col s12">Add</button>
+        </form>
+      </div>
+      <div class="row">
+        <ul class="collection col s12">
+          <li class="collection-item" v-for="todo in todos" :key="todo.id">
+            <p>
+              <label>
+                <input type="checkbox" :checked=todo.done @change="toggleStatus(todo)" />
+                <span>{{todo.title}}</span>
+                <span>
+                  <a @click.prevent="deleteTodo(todo)">
+                    <i class="material-icons right teal-text">delete</i>
+                  </a>
+                </span>
+              </label>
+            </p>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </template>
+
 <script>
 import axios from "axios";
 export default {
   name: "App",
   data() {
     return {
-      lists: null,
-      item: ""
+      todos: null,
+      newTodo: ""
     };
   },
   mounted: function() {
@@ -34,22 +52,22 @@ export default {
     fetchData: function() {
       var app = this;
       axios.get(process.env.API_URL + "/todo/list/").then(response => {
-        app.lists = response.data.results;
+        app.todos = response.data.results;
       });
     },
-    addItem: function() {
+    addTodo: function() {
       var app = this;
-      var newItem = { title: this.item, done: false };
+      var newItem = { title: this.newTodo, done: false };
       axios
         .post(process.env.API_URL + "/todo/list/", newItem)
         .then(response => {
           app.fetchData();
-          app.item = "";
+          app.newTodo = "";
         });
     },
-    deleteItem: function(id) {
+    deleteTodo: function(todo) {
       var app = this;
-      axios.delete(process.env.API_URL + "/todo/list/" + id).then(response => {
+      axios.delete(process.env.API_URL + "/todo/list/" + todo.id).then(response => {
         app.fetchData();
       });
     },
@@ -66,5 +84,6 @@ export default {
   }
 };
 </script>
+
 <style>
 </style>

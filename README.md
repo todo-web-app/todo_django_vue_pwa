@@ -20,5 +20,8 @@ npm run build --report
 
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
 
-# tutorial blog
+# Tutorial blog
 https://medium.com/@williamgnlee/simple-integrated-django-vue-js-web-application-configured-for-heroku-deployment-c4bd2b37aa70
+
+# Design
+https://vuejsexamples.com/to-do-list-application-created-with-only-vue-js/
