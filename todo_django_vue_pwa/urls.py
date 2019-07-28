@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
+from rest_framework_jwt.views import obtain_jwt_token, refresh_jwt_token
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,4 +26,6 @@ urlpatterns = [
     path('service-worker.js', (TemplateView.as_view(template_name="service-worker.js",
     content_type='application/javascript', )), name='sw.js'),
     path('index.html', TemplateView.as_view(template_name='index.html')),
+    path('auth/obtain_token/', obtain_jwt_token),
+    path('auth/refresh_token/', refresh_jwt_token),
 ]

@@ -19,7 +19,7 @@
           <li class="collection-item" v-for="todo in todos" :key="todo.id">
             <p>
               <label>
-                <input type="checkbox" :checked=todo.done @change="toggleStatus(todo)" />
+                <input type="checkbox" :checked="todo.done" @change="toggleStatus(todo)" />
                 <span>{{todo.title}}</span>
                 <span>
                   <a @click.prevent="deleteTodo(todo)">
@@ -50,8 +50,17 @@ export default {
   },
   methods: {
     fetchData: function() {
+      this.$store.dispatch('obtainToken', {username: 'admin', password: 'admin'});
+      const token = this.$store.state.jwt;
+      console.log(token);
       var app = this;
-      axios.get(process.env.API_URL + "/todo/list/").then(response => {
+      var yourConfig = {
+        headers: {
+          Authorization: "JWT " + token
+        }
+      };
+      console.log(yourConfig);
+      app.axios.get(process.env.API_URL + "/todo/list/", yourConfig).then(response => {
         app.todos = response.data.results;
       });
     },
@@ -67,9 +76,11 @@ export default {
     },
     deleteTodo: function(todo) {
       var app = this;
-      axios.delete(process.env.API_URL + "/todo/list/" + todo.id).then(response => {
-        app.fetchData();
-      });
+      axios
+        .delete(process.env.API_URL + "/todo/list/" + todo.id)
+        .then(response => {
+          app.fetchData();
+        });
     },
     toggleStatus: function(item) {
       var app = this;
