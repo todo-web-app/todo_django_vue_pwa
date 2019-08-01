@@ -3,12 +3,12 @@
 import Vue from 'vue'
 import App from './App'
 import '../node_modules/materialize-css/dist/css/materialize.min.css';
-// eslint-disable-next-line
 import '../node_modules/materialize-css/dist/js/materialize.min.js';
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import jwt_decode from 'jwt-decode'
 import Vuex from 'vuex'
+import router from '@/router'
 
 Vue.config.productionTip = false
 Vue.use(Vuex);
@@ -82,6 +82,7 @@ const store = new Vuex.Store({
 new Vue({
   el: '#app',
   store,
+  router,
   template: '<App/>',
   components: { App }
 })
