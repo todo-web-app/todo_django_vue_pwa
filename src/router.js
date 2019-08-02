@@ -1,20 +1,22 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import hello from '@/components/Hello'
+import Login from '@/components/Login'
 import TodoList from '@/components/TodoList'
+
 
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: hello
+      name: 'login',
+      component: Login
     },
     {
-      path: '/messages',
-      name: 'messages',
+      path: '/todo',
+      name: 'todo',
       component: TodoList
     }
   ]

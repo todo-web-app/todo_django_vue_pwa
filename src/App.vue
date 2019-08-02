@@ -1,9 +1,8 @@
 <template>
   <div id="app">
-    <h1>Django VueJs Template</h1>
     <div id="nav">
-     <router-link :to="{ name: 'home' }">Vue</router-link> |
-     <router-link :to="{ name: 'messages' }">Django Rest</router-link>
+     <router-link :to="{ name: 'login' }">Login</router-link> |
+     <router-link :to="{ name: 'todo' }">Todo List</router-link>
     </div>
     <router-view/>
   </div>

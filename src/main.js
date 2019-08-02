@@ -40,13 +40,7 @@ const store = new Vuex.Store({
         password: credentials.password
       }
  
-      axios.post(this.state.endpoints.obtainJWT, payload)
-        .then((response) => {
-          this.commit('updateToken', response.data.token);
-        })
-        .catch((error) => {
-          console.log(error);
-        })
+      return axios.post(this.state.endpoints.obtainJWT, payload)
     },
     refreshToken() {
       const payload = {

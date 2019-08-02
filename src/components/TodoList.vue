@@ -50,16 +50,13 @@ export default {
   },
   methods: {
     fetchData: function() {
-      this.$store.dispatch('obtainToken', {username: 'admin', password: 'admin'});
       const token = this.$store.state.jwt;
-      console.log(token);
       var app = this;
       var yourConfig = {
         headers: {
           Authorization: "JWT " + token
         }
       };
-      console.log(yourConfig);
       app.axios.get(process.env.API_URL + "/todo/list/", yourConfig).then(response => {
         app.todos = response.data.results;
       });
