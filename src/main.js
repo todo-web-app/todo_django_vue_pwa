@@ -59,7 +59,7 @@ const store = new Vuex.Store({
       if(token){
         const decoded = jwt_decode(token);
         const exp = decoded.exp
-        const orig_iat = decode.orig_iat
+        const orig_iat = decoded.orig_iat
         if(exp - (Date.now()/1000) < 1800 && (Date.now()/1000) - orig_iat < 628200){
           this.dispatch('refreshToken')
         } else if (exp -(Date.now()/1000) < 1800){
@@ -78,7 +78,7 @@ new Vue({
   store,
   router,
   template: '<App/>',
-  components: { App }
+  components: { App },
 })
 
 

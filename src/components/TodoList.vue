@@ -48,24 +48,31 @@ export default {
   mounted: function() {
     this.fetchData();
   },
+  updated: function() {
+    this.$store.dispatch('inspectToken');
+  },
   methods: {
     fetchData: function() {
-      const token = this.$store.state.jwt;
       var app = this;
-      var yourConfig = {
+      var headers = {
         headers: {
-          Authorization: "JWT " + token
+          Authorization: "JWT " + this.$store.state.jwt
         }
       };
-      app.axios.get(process.env.API_URL + "/todo/list/", yourConfig).then(response => {
+      app.axios.get(process.env.API_URL + "/todo/list/", headers).then(response => {
         app.todos = response.data.results;
       });
     },
     addTodo: function() {
       var app = this;
+      var headers = {
+        headers: {
+          Authorization: "JWT " + this.$store.state.jwt
+        }
+      };
       var newItem = { title: this.newTodo, done: false };
       axios
-        .post(process.env.API_URL + "/todo/list/", newItem)
+        .post(process.env.API_URL + "/todo/list/", newItem, headers)
         .then(response => {
           app.fetchData();
           app.newTodo = "";
