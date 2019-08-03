@@ -47,19 +47,12 @@ export default {
   },
   mounted: function() {
     this.fetchData();
-  },
-  updated: function() {
     this.$store.dispatch('inspectToken');
   },
   methods: {
     fetchData: function() {
       var app = this;
-      var headers = {
-        headers: {
-          Authorization: "JWT " + this.$store.state.jwt
-        }
-      };
-      app.axios.get(process.env.API_URL + "/todo/list/", headers).then(response => {
+      app.axios.get("/todo/list/").then(response => {
         app.todos = response.data.results;
       });
     },

@@ -12,8 +12,6 @@ import router from '@/router'
 
 Vue.config.productionTip = false
 Vue.use(Vuex);
-// bind axios to vue instance
-Vue.use(VueAxios, axios);
 
 const store = new Vuex.Store({
   state: {
@@ -71,6 +69,10 @@ const store = new Vuex.Store({
     }
   }
 })
+
+axios.defaults.baseURL = process.env.API_URL;
+Vue.use(VueAxios, axios);
+axios.defaults.headers.common['Authorization'] = "JWT " + store.state.jwt;
 
 /* eslint-disable no-new */
 new Vue({
