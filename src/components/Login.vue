@@ -43,7 +43,7 @@ export default {
         })
         .then(response => {
           this.$store.commit("updateToken", response.data.token);
-          this.$router.push("/todo");
+          this.$router.push("/list");
         })
         .catch(error => {
           let response = error.response;

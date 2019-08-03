@@ -6,7 +6,6 @@ import '../node_modules/materialize-css/dist/css/materialize.min.css';
 import '../node_modules/materialize-css/dist/js/materialize.min.js';
 import axios from 'axios'
 import VueAxios from 'vue-axios'
-import jwt_decode from 'jwt-decode'
 import router from '@/router'
 import store from '@/store'
 

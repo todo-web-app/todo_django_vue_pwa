@@ -65,7 +65,7 @@ const store = new Vuex.Store({
     },
     logout() {
       this.commit('removeToken');
-      router.push('login');
+      router.push('/login');
     }
   }
 })

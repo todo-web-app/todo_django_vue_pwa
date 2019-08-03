@@ -29,4 +29,5 @@ urlpatterns = [
     path('auth/obtain_token/', obtain_jwt_token),
     path('auth/refresh_token/', refresh_jwt_token),
     path('login/', TemplateView.as_view(template_name='index.html')),
+    path('list/', TemplateView.as_view(template_name='index.html')),
 ]

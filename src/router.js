@@ -18,8 +18,8 @@ export default new Router({
       component: Login
     },
     {
-      path: '/todo',
-      name: 'todo',
+      path: '/list',
+      name: 'list',
       component: TodoList
     },
   ]
