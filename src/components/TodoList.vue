@@ -58,14 +58,9 @@ export default {
     },
     addTodo: function() {
       var app = this;
-      var headers = {
-        headers: {
-          Authorization: "JWT " + this.$store.state.jwt
-        }
-      };
       var newItem = { title: this.newTodo, done: false };
       axios
-        .post(process.env.API_URL + "/todo/list/", newItem, headers)
+        .post(process.env.API_URL + "/todo/list/", newItem)
         .then(response => {
           app.fetchData();
           app.newTodo = "";

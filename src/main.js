@@ -66,6 +66,9 @@ const store = new Vuex.Store({
           // PROMPT USER TO RE-LOGIN, THIS ELSE CLAUSE COVERS THE CONDITION WHERE A TOKEN IS EXPIRED AS WELL
         }
       }
+    },
+    logout() {
+      this.commit('removeToken');
     }
   }
 })
@@ -73,16 +76,27 @@ const store = new Vuex.Store({
 // axios global config
 axios.defaults.baseURL = process.env.API_URL;
 Vue.use(VueAxios, axios);
-axios.defaults.headers.common['Authorization'] = "JWT " + store.state.jwt;
+
+
+// Add a request interceptor
+axios.interceptors.request.use(function (config) {
+  config.headers.authorization = "JWT " + store.state.jwt;
+  return config;
+}, function (error) {
+  // Do something with request error
+  return Promise.reject(error);
+});
 
 // Add a response interceptor to redirecto to login page request error is 401 
 axios.interceptors.response.use(function (response) {
+  console.log(response);
   // Do something with response data
   return response;
 }, function (error) {
+  console.log(error);
   // Do something with response error
   if (error.response.status === 401) {
-    store.dispatch('removeToken');
+    store.dispatch('logout');
     router.push('login');
   }
   return Promise.reject(error);
