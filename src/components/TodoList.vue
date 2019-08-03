@@ -39,7 +39,6 @@
 </template>
 
 <script>
-import axios from "axios";
 export default {
   name: "TodoList",
   data() {
@@ -62,7 +61,7 @@ export default {
     addTodo: function() {
       var app = this;
       var newItem = { title: this.newTodo, done: false };
-      axios
+      app.axios
         .post(process.env.API_URL + "/todo/list/", newItem)
         .then(response => {
           app.fetchData();
@@ -71,7 +70,7 @@ export default {
     },
     deleteTodo: function(todo) {
       var app = this;
-      axios
+      app.axios
         .delete(process.env.API_URL + "/todo/list/" + todo.id)
         .then(response => {
           app.fetchData();
@@ -79,7 +78,7 @@ export default {
     },
     toggleStatus: function(item) {
       var app = this;
-      axios
+      app.axios
         .patch(process.env.API_URL + "/todo/list/" + item.id + "/", {
           done: !item.done
         })
