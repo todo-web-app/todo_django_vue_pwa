@@ -69,6 +69,7 @@ const store = new Vuex.Store({
     },
     logout() {
       this.commit('removeToken');
+      router.push('login');
     }
   }
 })
@@ -89,15 +90,12 @@ axios.interceptors.request.use(function (config) {
 
 // Add a response interceptor to redirecto to login page request error is 401 
 axios.interceptors.response.use(function (response) {
-  console.log(response);
   // Do something with response data
   return response;
 }, function (error) {
-  console.log(error);
   // Do something with response error
   if (error.response.status === 401) {
     store.dispatch('logout');
-    router.push('login');
   }
   return Promise.reject(error);
 });
