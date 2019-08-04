@@ -30,7 +30,8 @@ if os.path.isfile(dotenv_file):
 SECRET_KEY = '51!uw=2ya=qa@kahy0x%b&=5@+cs_5^p96ol!)^!+#2msgya*-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG', True)
+DEBUG = False if os.getenv('DEBUG') else True
+print(DEBUG)
 
 ALLOWED_HOSTS = ['todo-django-vue-pwa.herokuapp.com', 'localhost', '127.0.0.1']
 

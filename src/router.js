@@ -22,5 +22,6 @@ export default new Router({
       name: 'list',
       component: TodoList
     },
+    { path: '*', component: Login }
   ]
 })
