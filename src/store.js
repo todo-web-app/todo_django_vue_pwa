@@ -1,7 +1,7 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
-import axios from 'axios'
+import axios from '@/axios'
 import Vuex from 'vuex'
 import router from '@/router'
 
@@ -11,10 +11,14 @@ const store = new Vuex.Store({
   state: {
     jwt: localStorage.getItem('t'),
     endpoints: {
-      obtainJWT: process.env.API_URL + '/auth/obtain_token/'
+      obtainJWT: '/auth/obtain_token/'
     }
   },
   mutations: {
+    updateToken(state, newToken) {
+      localStorage.setItem('t', newToken);
+      state.jwt = newToken;
+    },
     removeToken(state) {
       localStorage.removeItem('t');
       state.jwt = null;

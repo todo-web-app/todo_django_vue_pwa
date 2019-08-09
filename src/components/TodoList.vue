@@ -49,7 +49,6 @@ export default {
   },
   mounted: function() {
     this.fetchData();
-    this.$store.dispatch("inspectToken");
   },
   methods: {
     fetchData: function() {
