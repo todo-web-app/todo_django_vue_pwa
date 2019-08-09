@@ -26,6 +26,5 @@ urlpatterns = [
     path('service-worker.js', (TemplateView.as_view(template_name="service-worker.js", content_type='application/javascript', )), name='sw.js'),
     path('index.html', TemplateView.as_view(template_name='index.html')),
     path('auth/obtain_token/', obtain_jwt_token),
-    path('auth/refresh_token/', refresh_jwt_token),
     re_path(r'^.*', TemplateView.as_view(template_name='index.html'))
 ]
