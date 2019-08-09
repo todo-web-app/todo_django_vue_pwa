@@ -2,8 +2,6 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
-import '../node_modules/materialize-css/dist/css/materialize.min.css';
-import '../node_modules/materialize-css/dist/js/materialize.min.js';
 import axios from '@/axios'
 import VueAxios from 'vue-axios'
 import router from '@/router'
