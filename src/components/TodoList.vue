@@ -1,9 +1,6 @@
 <template>
   <div class="app">
     <div class="container">
-      <div id="nav">
-        <a v-on:click="logout">Logout</a>
-      </div>
       <div class="row header">
         <h1 class="col s12 center-align teal-text">To-Do List!</h1>
       </div>
@@ -44,11 +41,12 @@ export default {
   data() {
     return {
       todos: null,
-      newTodo: ""
+      newTodo: "",
     };
   },
   mounted: function() {
     this.fetchData();
+    this.$emit('show-sign-out', true)
   },
   methods: {
     fetchData: function() {
@@ -84,9 +82,6 @@ export default {
         .then(response => {
           app.fetchData();
         });
-    },
-    logout: function() {
-      this.$store.dispatch('logout');
     }
   }
 };

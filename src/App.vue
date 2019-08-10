@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <Navbar />
+    <Navbar v-bind:show="show"/>
     <b-container fluid class=py-3>
-    <router-view/>
+    <router-view v-on:show-sign-out="show=$event"/>
     </b-container>
   </div>
 </template>
@@ -11,6 +11,11 @@
   import Navbar from './components/Navbar.vue';  
   export default {
     name: 'navbar',
+    data() {
+      return {
+        show: false
+      };
+    },
     components: {
       Navbar,
     }
