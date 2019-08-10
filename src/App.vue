@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <Navbar />
+    <b-container fluid class=py-3>
     <router-view/>
+    </b-container>
   </div>
 </template>
 
