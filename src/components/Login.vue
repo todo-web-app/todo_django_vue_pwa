@@ -32,6 +32,9 @@ export default {
       }
     };
   },
+  mounted: function() {
+    this.$emit('show-sign-out', false)
+  },
   methods: {
     onSubmit(evt) {
       evt.preventDefault();
