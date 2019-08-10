@@ -1,37 +1,42 @@
 <template>
-  <div class="app">
-    <div class="container">
-      <div class="row header">
-        <h1 class="col s12 center-align teal-text">To-Do List!</h1>
-      </div>
-      <div class="row">
-        <form @submit.prevent="addTodo" class="col s12">
-          <div class="input-field">
-            <i class="material-icons prefix">list</i>
-            <textarea v-model="newTodo" id="icon_prefix2" class="materialize-textarea"></textarea>
-            <label for="icon_prefix2">What to do?</label>
-          </div>
-          <button class="btn waves-effect col s12">Add</button>
-        </form>
-      </div>
-      <div class="row">
-        <ul class="collection col s12">
-          <li class="collection-item" v-for="todo in todos" :key="todo.id">
-            <p>
-              <label>
-                <input type="checkbox" :checked="todo.done" @change="toggleStatus(todo)" />
-                <span>{{todo.title}}</span>
-                <span>
-                  <a @click.prevent="deleteTodo(todo)">
-                    <i class="material-icons right teal-text">delete</i>
-                  </a>
-                </span>
-              </label>
-            </p>
-          </li>
-        </ul>
-      </div>
-    </div>
+  <div>
+    <b-row>
+      <b-col md="6" offset-md="3">
+        <b-form @submit.prevent="addTodo">
+          <b-form-group id="input-group-1">
+            <b-input-group>
+              <b-form-input v-model="newTodo" placeholder="Enter todo"></b-form-input>
+              <b-input-group-append>
+                <b-button type="submit" variant="primary" class="float-right">Add</b-button>
+              </b-input-group-append>
+            </b-input-group>
+          </b-form-group>
+        </b-form>
+      </b-col>
+    </b-row>
+    <b-row>
+      <b-col md="6" offset-md="3" class="pt-3">
+        <b-list-group>
+          <b-list-group-item v-for="todo in todos" :key="todo.id">
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                :checked="todo.done"
+                @change="toggleStatus(todo)"
+                v-bind:id="todo.id"
+              />
+              <label class="form-check-label" v-bind:for="todo.id">{{todo.title}}</label>
+              <span>
+                <a @click.prevent="deleteTodo(todo)">
+                  <i class="material-icons float-right secondary">delete</i>
+                </a>
+              </span>
+            </div>
+          </b-list-group-item>
+        </b-list-group>
+      </b-col>
+    </b-row>
   </div>
 </template>
 
@@ -41,12 +46,12 @@ export default {
   data() {
     return {
       todos: null,
-      newTodo: "",
+      newTodo: ""
     };
   },
   mounted: function() {
     this.fetchData();
-    this.$emit('show-sign-out', true)
+    this.$emit("show-sign-out", true);
   },
   methods: {
     fetchData: function() {
