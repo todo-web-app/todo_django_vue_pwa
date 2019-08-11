@@ -11,3 +11,6 @@ class ListViewSet(viewsets.ModelViewSet):
     serializer_class = ListSerializer
     authentication_classes = (JSONWebTokenAuthentication,)
     permission_classes = (IsAuthenticated,)
+
+    def get_queryset(self):
+        return List.objects.filter(user=self.request.user)
