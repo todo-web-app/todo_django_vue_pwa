@@ -14,3 +14,6 @@ class ListViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         return List.objects.filter(user=self.request.user)
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
