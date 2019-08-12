@@ -9,4 +9,5 @@ router.register(r'list', views.ListViewSet)
 urlpatterns = [
     path('list/<int:pk>', views.ListViewSet.as_view({'delete': 'destroy'})),
     path('', include(router.urls)),
+    path('user/add', views.CreateUserView.as_view()),
 ]
