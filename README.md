@@ -22,5 +22,7 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 
 # Resources
 - https://medium.com/@williamgnlee/simple-integrated-django-vue-js-web-application-configured-for-heroku-deployment-c4bd2b37aa70
-- https://vuejsexamples.com/to-do-list-application-created-with-only-vue-js/
 - https://hackernoon.com/jwt-authentication-in-vue-js-and-django-rest-framework-part-1-c40c5c0d4f6e
+
+# Demo
+https://todo-django-vue-pwa.herokuapp.com
