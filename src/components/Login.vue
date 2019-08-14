@@ -2,7 +2,7 @@
   <div>
     <b-row>
       <b-col cols="12" md="4" offset-md="4">
-        <b-form @submit="onSubmit" class="border" id="login-form">
+        <b-form @submit.prevent="onSubmit" class="border" id="login-form">
           <b-form-group id="input-group-1" label="Username:" label-for="input-1">
             <b-form-input id="input-1" v-model="form.username" placeholder="Enter Username"></b-form-input>
           </b-form-group>
@@ -15,7 +15,7 @@
               type="password"
             ></b-form-input>
           </b-form-group>
-          <b-button type="submit" variant="secondary" class="float-left">Register</b-button>
+          <b-button type="submit" variant="secondary" :to="{ name:'register' }" class="float-left">Register</b-button>
           <b-button type="submit" variant="primary" class="float-right">Login</b-button>
         </b-form>
       </b-col>
@@ -37,8 +37,7 @@ export default {
     this.$emit('show-sign-out', false)
   },
   methods: {
-    onSubmit(evt) {
-      evt.preventDefault();
+    onSubmit() {
       this.$store
         .dispatch("obtainToken", {
           username: this.form.username,
