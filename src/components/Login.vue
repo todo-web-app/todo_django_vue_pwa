@@ -15,6 +15,7 @@
               type="password"
             ></b-form-input>
           </b-form-group>
+          <b-button type="submit" variant="secondary" class="float-left">Register</b-button>
           <b-button type="submit" variant="primary" class="float-right">Login</b-button>
         </b-form>
       </b-col>

@@ -2,7 +2,9 @@
   <div>
     <b-navbar toggleable="lg" type="dark" variant="success">
       <b-container>
-        <b-navbar-brand href="#">Family List</b-navbar-brand>
+        <b-navbar-brand :to="{ name: 'home' }">
+          Family List
+        </b-navbar-brand>
         <b-navbar-nav class="ml-auto" v-if="show">
           <b-nav-item href="#" @click.prevent="logout">Sign Out</b-nav-item>
         </b-navbar-nav>
