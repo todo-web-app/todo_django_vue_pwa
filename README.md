@@ -1,6 +1,6 @@
-# todo_django_vue_pwa
+# Family List
 
-> A Vue.js project
+> Central todo list pwa app
 
 ## Build Setup
 

@@ -1,6 +1,6 @@
 {
-  "name": "todo_django_vue_pwa",
-  "short_name": "todo_pwa",
+  "name": "Family List",
+  "short_name": "Family List",
   "icons": [
     {
       "src": "/static/img/icons/android-chrome-192x192.png",
