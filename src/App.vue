@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Navbar/>
-    <b-container fluid class=py-3>
+    <b-container fluid class="py-3 app-container">
     <router-view />
     </b-container>
   </div>
@@ -16,3 +16,9 @@
     }
   }
 </script>
+
+<style>
+.app-container {
+  min-height: 800px;
+}
+</style>

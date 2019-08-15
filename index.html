@@ -32,8 +32,7 @@
           if (file.match(/\.(js|css)$/)) { %>
   <link rel="<%= chunk.initial?'preload':'prefetch' %>" href="<%= htmlWebpackPlugin.files.publicPath + file %>"
     as="<%= file.match(/\.css$/)?'style':'script' %>"><% }}} %>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
 <body>
@@ -45,4 +44,13 @@
   <%= htmlWebpackPlugin.options.serviceWorkerLoader %>
   <!-- built files will be auto injected -->
 </body>
+<!-- Footer -->
+<footer class="page-footer font-small blue">
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">
+    © 2019 Family List
+  </div>
+  <!-- Copyright -->
+</footer>
+<!-- Footer -->
 </html>
