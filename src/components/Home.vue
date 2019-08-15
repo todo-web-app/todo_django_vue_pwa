@@ -35,10 +35,21 @@
 
 <script>
 export default {
-  data() {
-    return {
-      home: "home"
-    };
+  computed: {
+    logged_in () {
+      return this.$store.state.jwt ? true : false
+    }
+  },
+  beforeRouteEnter(to, from, next) {
+    // called before the route that renders this component is confirmed.
+    // does NOT have access to `this` component instance,
+    // because it has not been created yet when this guard is called!
+    next(vm => {
+      // access to component instance via `vm`
+      if (vm.logged_in) {
+        vm.$router.push("/list");
+      }
+    });
   }
 };
 </script>
