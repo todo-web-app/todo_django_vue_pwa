@@ -33,9 +33,6 @@ export default {
       }
     };
   },
-  mounted: function() {
-    this.$emit('show-sign-out', false)
-  },
   methods: {
     onSubmit() {
       this.$store

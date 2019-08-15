@@ -51,7 +51,6 @@ export default {
   },
   mounted: function() {
     this.fetchData();
-    this.$emit("show-sign-out", true);
   },
   methods: {
     fetchData: function() {

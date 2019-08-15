@@ -8,7 +8,7 @@
           Family List
         </b-navbar-brand>
         
-        <b-navbar-nav class="ml-auto" v-if="show">
+        <b-navbar-nav class="ml-auto" v-if="logged_in">
           <b-nav-item href="#" @click.prevent="logout">Sign Out</b-nav-item>
         </b-navbar-nav>
       </b-container>
@@ -18,8 +18,10 @@
 
 <script>
 export default {
-  props: {
-    show: Boolean,
+  computed: {
+    logged_in () {
+      return this.$store.state.jwt ? true : false
+    }
   },
   methods: {
     logout: function() {
