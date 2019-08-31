@@ -2,6 +2,8 @@
 
 > Central todo list pwa app
 
+![family-list](./static/img/family_list_home.png)
+
 ## Build Setup
 
 ``` bash
@@ -16,6 +18,10 @@ npm run build
 
 # build for production and view the bundle analyzer report
 npm run build --report
+
+# serve with django server need to run npm run build first
+# run also to serve api endpoint with django rest
+python manage.py runserver
 ```
 
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
