@@ -4,23 +4,24 @@
 
 ![family-list](./static/img/family_list_home.png)
 
-## Build Setup
+# Tech Stack
+- vue cli 2
+- python 3.x
+- Django
+
+## Setup
 
 ``` bash
 # install dependencies
 npm install
 
-# serve with hot reload at localhost:8080
-npm run dev
-
 # build for production with minification
 npm run build
 
-# build for production and view the bundle analyzer report
-npm run build --report
+# install python requirements, please use virtualenv
+pip install requirements.txt
 
-# serve with django server need to run npm run build first
-# run also to serve api endpoint with django rest
+# start the django http server
 python manage.py runserver
 ```
 
