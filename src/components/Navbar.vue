@@ -4,7 +4,7 @@
       <b-container>
         <b-navbar-brand :to="{ name: 'home' }" type="dark">
           <i class="material-icons secondary float-left">accessibility</i>
-          Family Lists
+          Family List
         </b-navbar-brand>
 
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
