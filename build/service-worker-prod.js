@@ -24,6 +24,12 @@
             setTimeout(checkUpdate, 60000);
           }
           checkUpdate();
+
+          // to show update available when there's a waiting service worker
+          if (registration.waiting) {
+            document.dispatchEvent(new CustomEvent('swUpdated', {detail: registration}));
+          }
+          
           // updatefound is fired if service-worker.js changes.
           registration.onupdatefound = function() {
             // updatefound is also fired the very first time the SW is installed,
@@ -33,7 +39,6 @@
             if (navigator.serviceWorker.controller) {
               // The updatefound event implies that registration.installing is set
               var installingWorker = registration.installing;
-
               installingWorker.onstatechange = function() {
                 switch (installingWorker.state) {
                   case 'installed':
@@ -41,7 +46,8 @@
                     // fresh content will have been added to the cache.
                     // It's the perfect time to display a "New content is
                     // available; please refresh." message in the page's interface.
-                    window.location.reload();
+                    document.dispatchEvent(new CustomEvent('swUpdated', {detail: registration}));
+                    break;
                   case 'redundant':
                     throw new Error('The installing ' +
                                     'service worker became redundant.');
