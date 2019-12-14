@@ -2,20 +2,42 @@
   <div>
     <b-row>
       <b-col cols="12" md="4" offset-md="4">
+        <b-alert
+          dismissible
+          variant="danger"
+          v-for="(error, index) in form.non_field_errors"
+          :key="index"
+          show
+          fade
+        >{{ error }}</b-alert>
         <b-form @submit.prevent="onSubmit" class="border" id="login-form">
           <b-form-group id="input-group-1" label="Username:" label-for="input-1">
-            <b-form-input id="input-1" v-model="form.username" placeholder="Enter Username"></b-form-input>
+            <b-form-input
+              id="input-1"
+              v-model="form.username"
+              placeholder="Enter Username"
+              :state="form.username_required ? false : null"
+              aria-describedby="input-1-live-feedback"
+            ></b-form-input>
+            <b-form-invalid-feedback id="input-1-live-feedback">{{ form.username_required }}</b-form-invalid-feedback>
           </b-form-group>
           <b-form-group id="input-group-2" label="Password:" label-for="input-2">
             <b-form-input
               id="input-2"
               v-model="form.password"
-              required
               placeholder="Enter password"
               type="password"
+              :state="form.password_required ? false : null"
+              aria-describedby="input-2-live-feedback"
             ></b-form-input>
+            <b-form-invalid-feedback id="input-2-live-feedback">{{ form.password_required }}</b-form-invalid-feedback>
           </b-form-group>
-          <b-button type="submit" variant="secondary" :to="{ name:'register' }" class="float-left">Register</b-button>
+          <b-button
+            type="submit"
+            variant="secondary"
+            :to="{ name:'register' }"
+            class="float-left"
+          >Register</b-button>
           <b-button type="submit" variant="primary" class="float-right">Login</b-button>
         </b-form>
       </b-col>
@@ -29,12 +51,19 @@ export default {
     return {
       form: {
         username: "",
-        password: ""
+        password: "",
+        non_field_errors: [],
+        username_required: "",
+        password_required: ""
       }
     };
   },
   methods: {
     onSubmit() {
+      this.form.non_field_errors = [];
+      this.form.username_required = "";
+      this.form.password_required = "";
+
       this.$store
         .dispatch("obtainToken", {
           username: this.form.username,
@@ -48,9 +77,13 @@ export default {
           let response = error.response;
 
           if (response.status == 400) {
-            this.username_errors = response.data.username;
-            this.password_errors = response.data.password;
-            this.non_field_errors = response.data.non_field_errors;
+            if (response.data.username) {
+              this.form.username_required = response.data.username[0];
+            }
+            if (response.data.password) {
+              this.form.password_required = response.data.password[0];
+            }
+            this.form.non_field_errors = response.data.non_field_errors;
           } else {
             console.log(error);
           }
