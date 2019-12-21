@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-jumbotron header="Family List" lead="Central list of your family">
+    <b-jumbotron header="Family List" lead="Central list of things todos! :)">
       <b-button type="submit" variant="primary" :to="{ name: 'login' }">Create your list now!</b-button>
     </b-jumbotron>
 
@@ -27,7 +27,7 @@
           <br />
         </div>
         <h3>Dynamic</h3>
-        <p class="feature-description">Powered with Django REST + VUE</p>
+        <p class="feature-description">Powered by Django REST and VUE</p>
       </b-col>
     </b-row>
   </div>
