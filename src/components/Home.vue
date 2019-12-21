@@ -62,6 +62,6 @@ h3,
 }
 
 .feature-icon > .material-icons {
-  font-size: 50px;
+  font-size: 100px;
 }
 </style>
