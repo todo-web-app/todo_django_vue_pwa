@@ -2,18 +2,12 @@
 
 PWA todo list app to learn vue, pwa and django rest framework.
 
-We use it as shared list with the family if there are something needed todo or buy.
-
-![family-list](./static/img/family_list_home.png)
-
 # Features
 - PWA update available notification
 - CRD todo list U is still todo! :)
-- PWA installable
-- PWA offline first
-- Mobile responsive
+- JSON web token authentication
 
-# Tech Stack
+# Tech Tools
 - VUE CLI 2
 - Python 3.x
 - Django
