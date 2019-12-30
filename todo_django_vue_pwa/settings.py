@@ -131,7 +131,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'todo.pagination.CustomPagination',
-    'PAGE_SIZE': 1
+    'PAGE_SIZE': 10
 }
 
 CORS_ORIGIN_ALLOW_ALL = False
