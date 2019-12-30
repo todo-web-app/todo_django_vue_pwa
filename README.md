@@ -6,6 +6,7 @@ PWA todo list app to learn vue, pwa and django rest framework.
 - PWA update available notification
 - CRD todo list U is still todo! :)
 - JSON web token authentication
+- Pagination
 
 # Tech Tools
 - VUE CLI 2

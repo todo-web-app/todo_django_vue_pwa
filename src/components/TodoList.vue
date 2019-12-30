@@ -16,7 +16,7 @@
     </b-row>
     <b-row>
       <b-col md="6" offset-md="3" class="pt-3">
-        <b-list-group>
+        <b-list-group id="todo-list">
           <b-list-group-item v-for="todo in todos" :key="todo.id">
             <div class="form-check">
               <input
@@ -35,6 +35,15 @@
             </div>
           </b-list-group-item>
         </b-list-group>
+        <b-pagination-nav
+          :link-gen="linkGen"
+          :number-of-pages="noOfPages"
+          use-router
+          @change="fetchData()"
+          v-show="showPagination"
+          align="center"
+          class="pt-3"
+        ></b-pagination-nav>
       </b-col>
     </b-row>
   </div>
@@ -46,17 +55,31 @@ export default {
   data() {
     return {
       todos: null,
-      newTodo: ""
+      newTodo: "",
+      noOfPages: 1,
+      showPagination: false
     };
   },
   mounted: function() {
     this.fetchData();
   },
   methods: {
+    linkGen(pageNum) {
+      return pageNum === 1 ? "?" : `?page=${pageNum}`;
+    },
     fetchData: function() {
       var app = this;
-      app.axios.get("/todo/list/").then(response => {
+      var page = this.$route.query.page;
+      var request_url = "/todo/list/";
+
+      if (page) {
+        request_url = request_url + "?page=" + page;
+      }
+
+      app.axios.get(request_url).then(response => {
         app.todos = response.data.results;
+        app.noOfPages = response.data.total_pages;
+        app.showPagination = response.data.total_pages > 1;
       });
     },
     addTodo: function() {
