@@ -23,7 +23,6 @@ class ListViewSet(viewsets.ModelViewSet):
 
 
 class CreateUserView(CreateAPIView):
-
     model = User
     permission_classes = [
         AllowAny

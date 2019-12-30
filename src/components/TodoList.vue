@@ -17,7 +17,7 @@
     <b-row>
       <b-col md="6" offset-md="3" class="pt-3">
         <b-list-group id="todo-list">
-          <b-list-group-item v-for="todo in todos" :key="todo.id">
+          <b-list-group-item v-for="todo in todos" :key="todo.id" v-bind:class="{done: todo.done}">
             <div class="form-check">
               <input
                 class="form-check-input"
@@ -26,7 +26,12 @@
                 @change="toggleStatus(todo)"
                 v-bind:id="todo.id"
               />
-              <label class="form-check-label" v-bind:for="todo.id">{{todo.title}}</label>
+              <label class="form-check-label" v-bind:for="todo.id">
+                <span v-if="todo.done">
+                <strike>{{ todo.title }}</strike>
+                </span>
+                <span v-else>{{ todo.title }}</span>
+              </label>
               <span>
                 <a @click.prevent="deleteTodo(todo)">
                   <i class="material-icons float-right secondary">delete</i>
@@ -113,3 +118,9 @@ export default {
   }
 };
 </script>
+
+<style>
+.done {
+  background-color: #80808014;
+}
+</style>
