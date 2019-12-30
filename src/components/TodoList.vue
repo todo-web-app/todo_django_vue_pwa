@@ -121,6 +121,6 @@ export default {
 
 <style>
 .done {
-  background-color: #80808014;
+  background-color: #80808014 !important;
 }
 </style>
