@@ -4,6 +4,8 @@ node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+.python-version
+.db
 
 # Editor directories and files
 .idea
@@ -70,3 +72,5 @@ db.sqlite3
 venv
 staticfiles
 .python-version
+*.db
+todo/todo.txt
