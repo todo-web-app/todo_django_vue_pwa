@@ -36,7 +36,3 @@ PWA todo list app to learn vue, pwa and django rest framework.
 - https://hackernoon.com/jwt-authentication-in-vue-js-and-django-rest-framework-part-1-c40c5c0d4f6e
 - https://github.com/jacobian/dj-database-url
 - https://webdeasy.de/en/how-to-integrate-google-analytics-on-your-vue-js-page/
-
-## Demo
-
-https://todo-django-vue-pwa.herokuapp.com
