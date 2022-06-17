@@ -16,11 +16,12 @@ Vue.config.productionTip = false
 
 Vue.use(VueAxios, axios);
 Vue.use(BootstrapVue)
+
 // Configuration VueAnalytics
-Vue.use(VueAnalytics, {
-  id: 'UA-164595657-1',
-  router
-});
+// Vue.use(VueAnalytics, {
+//   id: 'UA-TEST123-1', add you analytics code
+//   router
+// });
 
 /* eslint-disable no-new */
 new Vue({
